@@ -92,7 +92,7 @@ class ReservationAgent(Agent):
             "Do not end on a statement where the user is not expected to respond. "
             "When interrupted, ask if the user would like to continue or end. "
             f"The user's name is {name}, and they want to speak in {language}.",
-            llm=openai.realtime.RealtimeModel(voice="echo"),
+            # llm=openai.realtime.RealtimeModel(voice="echo"),
             tts=None,
             chat_ctx=chat_ctx,
         )
@@ -168,8 +168,9 @@ async def entrypoint(ctx: JobContext):
         vad=ctx.proc.userdata["vad"],
         # llm=openai.LLM(model="gpt-4.1"),
         llm=openai.LLM(model="gpt-4o-mini"),
-        # stt=deepgram.STT(model="nova-3"),
-        stt=openai.STT(model="whisper-1"),
+        stt=deepgram.STT(model="nova-3", language="multi"),
+        # stt=deepgram.STT(model="nova-3", language="korean"),
+        # stt=openai.STT(model="whisper-1"),
         tts=openai.TTS(voice="echo"),
         userdata=ReservationData(),
     )
