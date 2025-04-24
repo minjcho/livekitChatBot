@@ -1,0 +1,2 @@
+dotenv
+livekit-agents[openai,silero,deepgram,cartesia,turn-detector]

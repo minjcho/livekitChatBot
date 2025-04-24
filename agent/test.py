@@ -23,8 +23,8 @@ async def entrypoint(ctx: agents.JobContext):
     await ctx.connect()
 
     session = AgentSession(
-        stt=deepgram.STT(model="nova-3", language="multi"),
-        # stt=openai.STT(model="whisper-1"),
+        # stt=deepgram.STT(model="nova-3", language="multi"),
+        stt=openai.STT(model="whisper-1"),
         # stt=openai.STT(model="gpt-4o-mini-transcribe"),
         # llm=openai.LLM(model="gpt-4o-mini"),
         llm=openai.LLM(model="gpt-4o"),
