@@ -5,7 +5,7 @@ from typing import Optional
 
 from dotenv import load_dotenv
 
-from livekit import api
+from livekit import api, rtc
 from livekit.agents import (
     Agent,
     AgentSession,
@@ -19,6 +19,7 @@ from livekit.agents import (
     cli,
     metrics,
 )
+from livekit.agents.voice.avatar import DataStreamAudioReceiver
 
 import pandas as pd
 
@@ -169,6 +170,7 @@ async def entrypoint(ctx: JobContext):
         room_input_options=RoomInputOptions(),
         room_output_options=RoomOutputOptions(transcription_enabled=True),
     )
+    
 
 if __name__ == "__main__":
     cli.run_app(WorkerOptions(entrypoint_fnc=entrypoint, prewarm_fnc=prewarm))
